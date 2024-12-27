@@ -1,0 +1,32 @@
+#Server Port Configuration
+server:
+  port: 8082
+
+
+#Spring Database MongoDb Configuration
+spring:
+  data:
+    mongodb:
+      #uri:mongodb://localhost:27017/
+    #uri: mongodb://username:password@host:port/database # Connection URI format
+      host: localhost
+      port: 27017
+      database: microservice
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+  config:
+    import: optional:configserver:http://localhost:8085
+
+
+#Server Configuration
+#eureka:
+#  instance:
+#    prefer-ip-address: true
+#  client:
+#    register-with-eureka: true
+#    fetch-registry: true
+#    service-url:
+#      defaultZone: http://localhost:8888/eureka

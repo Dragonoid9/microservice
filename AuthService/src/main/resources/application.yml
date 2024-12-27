@@ -1,0 +1,45 @@
+#Server Port Configuration
+server:
+  port: 8086
+
+spring:
+  application:
+    name: Auth-Service
+  #Liquibase Setup
+  liquibase:
+    change-log: classpath:/db.changelog/db.changelog-master.yaml
+    enabled: true
+
+  #Spring Database MySql Configuration
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/microservice
+    username: root
+    password: root
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+
+  #Spring Eureka Service Configuration
+  #eureka:
+  config:
+    import: optional:configserver:http://localhost:8085
+
+
+#Jwt
+jwt:
+    secret: ${secretKey}
+    accessexpiration: ${accessExpire}
+    refreshexpiration: ${refreshExpire}
+
+
+#Spring Eureka Service Configuration
+#eureka:
+#  instance:
+#    prefer-ip-address: true
+#  client:
+#    register-with-eureka: true
+#    fetch-registry: true
+#    service-url:
+#      defaultZone: http://localhost:8888/eureka
